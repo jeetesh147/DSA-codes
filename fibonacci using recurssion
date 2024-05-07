@@ -1,0 +1,16 @@
+import java.util.Scanner;
+
+//6
+public class fibonaccirecursion {
+    public static int fib(int a){
+        if(a<=1) return a;
+        return fib(a-1) + fib(a-2);
+
+    }
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("enter the number  : ");
+        int a = sc.nextInt();
+        System.out.println(fib(a));
+    }
+}
