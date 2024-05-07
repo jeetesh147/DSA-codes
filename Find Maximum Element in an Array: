@@ -1,0 +1,17 @@
+public class MaximumElement {
+    public static void main(String[] args) {
+        int[] arr = {10, 30, 50, 20, 40};
+        int max = findMax(arr);
+        System.out.println("Maximum element in the array: " + max);
+    }
+
+    public static int findMax(int[] arr) {
+        int max = Integer.MIN_VALUE;
+        for (int num : arr) {
+            if (num > max) {
+                max = num;
+            }
+        }
+        return max;
+    }
+}
