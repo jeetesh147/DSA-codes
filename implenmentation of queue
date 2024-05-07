@@ -1,0 +1,66 @@
+class Queue {
+    private int maxSize;
+    private int front;
+    private int rear;
+    private int[] queueArray;
+
+    public Queue(int size) {
+        this.maxSize = size;
+        this.queueArray = new int[maxSize];
+        this.front = 0;
+        this.rear = -1;
+    }
+
+    public boolean isEmpty() {
+        return (rear == front - 1 || front == rear + 1);
+    }
+
+    public boolean isFull() {
+        return (rear == maxSize - 1 && front == 0) || (rear == front - 1);
+    }
+
+    public void enqueue(int data) {
+        if (isFull()) {
+            System.out.println("Queue is full. Cannot enqueue element.");
+            return;
+        }
+        rear = (rear + 1) % maxSize;
+        queueArray[rear] = data;
+    }
+
+    public int dequeue() {
+        if (isEmpty()) {
+            System.out.println("Queue is empty. Cannot dequeue element.");
+            return -1;
+        }
+        int dequeuedElement = queueArray[front];
+        front = (front + 1) % maxSize;
+        return dequeuedElement;
+    }
+
+    public int peek() {
+        if (isEmpty()) {
+            System.out.println("Queue is empty.");
+            return -1;
+        }
+        return queueArray[front];
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Queue queue = new Queue(5);
+
+        queue.enqueue(1);
+        queue.enqueue(2);
+        queue.enqueue(3);
+
+        System.out.println("Front element: " + queue.peek());
+
+        System.out.println("Dequeued element: " + queue.dequeue());
+        System.out.println("Dequeued element: " + queue.dequeue());
+        System.out.println("Dequeued element: " + queue.dequeue());
+
+        System.out.println("Is queue empty? " + queue.isEmpty());
+    }
+}
